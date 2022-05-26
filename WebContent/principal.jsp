@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<form method="post" action="/web/web">
+	<form method="get" action="/web/web">
 
         <div style="background-color:red; ">
                 
@@ -28,6 +28,7 @@
        </div>
 
 </form>
+
 </body>
 
 </html>

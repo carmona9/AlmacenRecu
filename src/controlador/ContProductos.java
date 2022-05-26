@@ -15,6 +15,11 @@ public class ContProductos {
 		this.modelo=modelo;
 	}
 	
+	public Vector<DAOProductos> obtenerProductos() throws Exception{
+		productos=modelo.obtenerProductos();
+		return productos;
+	}
+	
 	public Vector<DAOProductos> mostrarTuerca() throws Exception {
 		return modelo.mostrarTuercas();
 	}

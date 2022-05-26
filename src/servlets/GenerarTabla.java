@@ -63,7 +63,7 @@ public class GenerarTabla extends HttpServlet {
         out.println("<html>");
         out.println("<head></head>");         
         out.println("<body>");
-        out.print("<a href='principal.jsp'>INICIO</a>");
+        out.print("<a href='catalogo.jsp'>INICIO</a>");
         out.println("<br>");
         out.println("<table align='center' border='2'>");
         	out.println("<tr>");
@@ -92,8 +92,9 @@ public class GenerarTabla extends HttpServlet {
     			out.println("<td>"+producto.getNombre_producto()+"</td>");
     			out.println("<td>"+producto.getCantidad()+"</td>");
     			out.println("<td>"+producto.getPrecio()+"</td>");
-    			out.println("<td>"+(Integer.parseInt(producto.getCantidad())*Integer.parseInt(producto.getPrecio())+"</td>"));
+    			out.println("<td>"+(Float.valueOf(producto.getCantidad())*Float.valueOf(producto.getPrecio())+"</td>"));
     			out.println("</tr>");
+    			//Float.valueOf(producto.getCantidad())*Float.valueOf(producto.getPrecio())
     		}
     		break;
     	case "Tornillo":
@@ -110,7 +111,7 @@ public class GenerarTabla extends HttpServlet {
     			out.println("<td>"+producto.getNombre_producto()+"</td>");
     			out.println("<td>"+producto.getCantidad()+"</td>");
     			out.println("<td>"+producto.getPrecio()+"</td>");
-    			out.println("<td>"+(Integer.parseInt(producto.getCantidad())*Integer.parseInt(producto.getPrecio())+"</td>"));
+    			out.println("<td>"+(Float.valueOf(producto.getCantidad())*Float.valueOf(producto.getPrecio())+"</td>"));
     			out.println("</tr>");
     		}
     		break;
@@ -128,7 +129,7 @@ public class GenerarTabla extends HttpServlet {
     			out.println("<td>"+producto.getNombre_producto()+"</td>");
     			out.println("<td>"+producto.getCantidad()+"</td>");
     			out.println("<td>"+producto.getPrecio()+"</td>");
-    			out.println("<td>"+(Integer.parseInt(producto.getCantidad())*Integer.parseInt(producto.getPrecio())+"</td>"));
+    			out.println("<td>"+(Float.valueOf(producto.getCantidad())*Float.valueOf(producto.getPrecio())+"</td>"));
     			out.println("</tr>");
     		}
     		break;
@@ -146,7 +147,7 @@ public class GenerarTabla extends HttpServlet {
     			out.println("<td>"+producto.getNombre_producto()+"</td>");
     			out.println("<td>"+producto.getCantidad()+"</td>");
     			out.println("<td>"+producto.getPrecio()+"</td>");
-    			out.println("<td>"+(Integer.parseInt(producto.getCantidad())*Integer.parseInt(producto.getPrecio())+"</td>"));
+    			out.println("<td>"+(Float.valueOf(producto.getCantidad())*Float.valueOf(producto.getPrecio())+"</td>"));
     			out.println("</tr>");
     		}
     		break;

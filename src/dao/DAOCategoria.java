@@ -6,23 +6,23 @@ import java.util.Vector;
 
 public class DAOCategoria {
 
-	private String cod_categoria;
+	private int cod_categoria;
 	private String nombre_categoria;
 	
 	public DAOCategoria() {
 		
 	}
 	
-	public DAOCategoria(String cod_categoria, String nombre_categoria) {
+	public DAOCategoria(int cod_categoria, String nombre_categoria) {
 		this.cod_categoria = cod_categoria;
 		this.nombre_categoria = nombre_categoria;
 	}
 	
-	public String getCod_categoria() {
+	public int getCod_categoria() {
 		return cod_categoria;
 	}
 	
-	public void setCod_categoria(String cod_categoria) {
+	public void setCod_categoria(int cod_categoria) {
 		this.cod_categoria = cod_categoria;
 	}
 	
@@ -46,12 +46,15 @@ public class DAOCategoria {
 		String sqlQuery = "SELECT * FROM almacen.categoria;";
 		return buscaResultadosConConsulta(sqlQuery);
 	}
+	
+	
 	public static DAOCategoria obtenerCategoria(String codCategoria) throws Exception {
 		String sqlQuery = "select * from categoria WHERE cod_categoria= '" + codCategoria + "';";
 		//Este metodo devolvera un vector tipo <CategoriaDAO>
 		return buscaResultadosUnaCategoria(sqlQuery);
 		
 	}
+	
 	
 	
 	private static Vector<DAOCategoria> buscaResultadosConConsulta(String consulta) throws Exception{
@@ -65,7 +68,7 @@ public class DAOCategoria {
 		DAOCategoria categoria;
 		
 		while(resultado.next()) {
-			String codCategoria = resultado.getString(1);
+			int codCategoria = resultado.getInt(1);
 			String nombreCategoria = resultado.getString(2);
 			categoria = new DAOCategoria(codCategoria,nombreCategoria);
 			categorias.addElement(categoria);
@@ -84,7 +87,7 @@ public class DAOCategoria {
 		DAOCategoria categoria = null;
 		
 		while(resultado.next()) {
-			String codCategoria = resultado.getString(1);
+			int codCategoria = resultado.getInt(1);
 			String nombreCategoria = resultado.getString(2);
 			categoria = new DAOCategoria(codCategoria,nombreCategoria);			
 		}
