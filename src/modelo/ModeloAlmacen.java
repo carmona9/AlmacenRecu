@@ -22,8 +22,10 @@ public class ModeloAlmacen {
 	private DAOCategoria categoria;
 	private DAOProductos producto;
 	
-	private Vector<DAOCategoria> categorias;
+	
+	
 	private Vector<DAOProductos> productos;
+	private Vector<DAOCategoria> categorias;
 	
 	Properties servicioElegido = new Properties();
 	
@@ -54,6 +56,25 @@ public class ModeloAlmacen {
 		}
 	}
 
+	public Vector<DAOProductos> obtenerProductos() throws Exception{
+		try {				
+		productos=DAOProductos.obtenerProductos();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return productos;
+	}
+	
+	public Vector<DAOCategoria> obtenerCategorias() throws Exception{
+		try {				
+		categorias=DAOCategoria.obtenerCategorias();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return categorias;
+	}
+	
+	
 /////////////////////////////////////////////////MOSTRAR//////////////////////////////////////////////////////////////
 	public static Vector<DAOProductos> mostrarTuercas() throws Exception {
 		return DAOProductos.mostrarTuercas();
@@ -69,6 +90,11 @@ public class ModeloAlmacen {
 	
 	public static Vector<DAOProductos> mostrarBisagra() throws Exception {
 		return DAOProductos.mostrarBisagra();
+	}
+
+	public Vector<DAOCategoria> obtenerCategoria() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

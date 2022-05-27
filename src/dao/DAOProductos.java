@@ -8,18 +8,18 @@ import java.util.Vector;
 
 public class DAOProductos {
 
-	private String cod_categoria;
+	private int cod_categoria;
 	private String cod_producto;
 	private String nombre_producto;
 	private String cantidad;
-	private String precio;
+	private float precio;
 	
 	public DAOProductos() {
 		
 	}
 	
-	public DAOProductos(String cod_categoria,String cod_producto,
-			String nombre_producto,String cantidad,String precio) {
+	public DAOProductos(int cod_categoria,String cod_producto,
+			String nombre_producto,String cantidad,float precio) {
 		super();
 		this.cod_categoria= cod_categoria;
 		this.cod_producto= cod_producto;
@@ -28,11 +28,11 @@ public class DAOProductos {
 		this.precio=precio;
 	}
 
-	public String getCod_categoria() {
+	public int getCod_categoria() {
 		return cod_categoria;
 	}
 
-	public void setCod_categoria(String cod_categoria) {
+	public void setCod_categoria(int cod_categoria) {
 		this.cod_categoria = cod_categoria;
 	}
 
@@ -60,11 +60,11 @@ public class DAOProductos {
 		this.cantidad = cantidad;
 	}
 
-	public String getPrecio() {
+	public float getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(String precio) {
+	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
 	
@@ -76,6 +76,11 @@ public class DAOProductos {
 		DAOProductos.resultado = resultado;
 	}
 	
+	public static Vector<DAOProductos> obtenerProductos() throws Exception{
+		String sqlQuery = "select * from productos";
+		//Este método devolverá un vector de tipo <DAOLibro>
+		return buscaResultadosConConsulta(sqlQuery);
+	}
 	
 	/////////////////////////////////MOSTRAR///////////////////////////////////////////////////////////////////////////////
 	
@@ -99,11 +104,6 @@ public class DAOProductos {
 		return buscaResultadosConConsulta(sqlQuery);
 	}
 	
-	public static int borrarProducto(String cod_producto) throws Exception {
-		String sqlQuery="DELETE FROM almacen.productos WHERE cod_producto='"+cod_producto+"'";
-		return DAOProductos.sentencia.executeUpdate(sqlQuery);
-	}
-	
 	private static Vector<DAOProductos> buscaResultadosConConsulta(String consulta) throws Exception{
 		resultado = DAOProductos.sentencia.executeQuery(consulta);
 		return cargaResultSetToVector(resultado);
@@ -115,11 +115,11 @@ public class DAOProductos {
 		DAOProductos producto;
 		
 		while(resultado.next()) {
-			String cod_categoria = resultado.getString(1);
+			int cod_categoria = resultado.getInt(1);
 			String cod_producto = resultado.getString(2);
 			String nombre_producto = resultado.getString(3);
 			String cantidad = resultado.getString(4);
-			String precio = resultado.getString(5);
+			float precio = resultado.getFloat(5);
 			producto = new DAOProductos(cod_categoria,cod_producto,nombre_producto,cantidad,precio);
 			productos.addElement(producto);
 		}
@@ -137,11 +137,11 @@ public class DAOProductos {
 		DAOProductos producto= null;
 		
 		while(resultado.next()) {
-			String cod_categoria = resultado.getString(1);
+			int cod_categoria = resultado.getInt(1);
 			String cod_producto = resultado.getString(2);
 			String nombre_producto = resultado.getString(3);
 			String cantidad = resultado.getString(4);
-			String precio = resultado.getString(5);
+			float precio = resultado.getFloat(5);
 			
 			producto = new DAOProductos(cod_categoria,cod_producto,nombre_producto,cantidad,precio);
 		}
